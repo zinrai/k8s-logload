@@ -1,0 +1,9 @@
+# Load shaping only. Connection details are NOT here:
+#   - kubeconfig / context -> owned by kubectl (KUBECONFIG, current-context)
+
+namespace_prefix  = "logger-ns"
+namespace_count   = 10
+bytes_per_line    = 40
+kilobytes_per_pod = 200
+megabytes_total   = 5
+concurrency       = 5

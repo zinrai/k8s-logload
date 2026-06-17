@@ -1,0 +1,7 @@
+apiVersion: tekton.dev/v1
+kind: TaskRun
+metadata:
+  generateName: random-strings-run-
+spec:
+  taskRef:
+    name: random-strings

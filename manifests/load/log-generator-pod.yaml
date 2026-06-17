@@ -1,0 +1,19 @@
+# Template rendered by `k8s-logload load up` via string.Template.safe_substitute.
+# Keys NAMESPACE / POD_NAME / TOTAL_LOG_LINES / BYTES_PER_LINE are filled in;
+# shell-side $(seq ...) is left intact (not a known key).
+# The total_log_lines annotation is the source of truth that a verifier compares against.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ${POD_NAME}
+  namespace: ${NAMESPACE}
+  annotations:
+    total_log_lines: "${TOTAL_LOG_LINES}"
+spec:
+  restartPolicy: Never
+  containers:
+    - name: logger
+      image: busybox:1.36.1-uclibc
+      command: ["/bin/sh", "-c"]
+      args:
+        - for i in $(seq 1 ${TOTAL_LOG_LINES}); do cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c ${BYTES_PER_LINE}; echo; done

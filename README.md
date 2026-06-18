@@ -6,7 +6,7 @@ via `kubectl` and emits JSON pod records on stdout, so a measurer such
 as [k8s-loki-logbench](https://github.com/zinrai/k8s-loki-logbench) can consume them by pipe.
 
 A single self-contained Python script (`k8s-logload.py`, stdlib only). It is
-**log-backend agnostic** — it does not talk to Loki (or any log store). It only
+**log-backend agnostic**: it does not talk to Loki (or any log store). It only
 creates workloads in the cluster; observing where their logs end up is a
 separate concern.
 
@@ -18,7 +18,7 @@ separate concern.
 
 ## Subcommands
 
-Run `./k8s-logload.py <cmd> --help` for flags — that output is the source of truth.
+Run `./k8s-logload.py <cmd> --help` for flags. That output is the source of truth.
 
 | command | what it does |
 | --- | --- |
